@@ -1,4 +1,3 @@
-COPY
 import { useEffect, useState } from 'react';
 
 const useCountdown = (targetDate) => {
