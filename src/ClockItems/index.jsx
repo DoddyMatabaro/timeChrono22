@@ -1,21 +1,41 @@
 import React, { useEffect, userEffect, useState} from 'react';
 
 import './clockItems.css';
+import DataTimeDispaly from './DateTimeDisplay';
+import { useCountdown } from './hooks/useCountdown';
 
 function ClockItems(targetDate) {
-    const countDownDate = new Date(targetDate).getTime();
-
-    const [countDown, setCountDown] = useState(
-      countDownDate - new Date().getTime()
+    
+  const ExpireNotice = () =>{
+    return (
+      <div className="expired-notice">
+        <span>Expired</span>
+        <p> Please select a future date and time</p>
+      </div>
     );
+  };
 
-    useEffect(()=>{
-      const interval = setInterval(()=>{
-        setCountDown(countDownDate - new Date().getTime());
-      },1000);
-
-      return () => clearInterval(interval);
-    })
+  const showCounter = ({days, hours, minutes, seconds})=>{
+    return (
+      <div className="show-counter">
+        <a
+          href="https://tapasadhikary.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="countdown-link"
+        >
+          <DateTimeDisplay value={days} type={'Days'} isDanger={days <= 3} />
+          <p>:</p>
+          <DateTimeDisplay value={hours} type={'Hours'} isDanger={false} />
+          <p>:</p>
+          <DateTimeDisplay value={minutes} type={'Mins'} isDanger={false} />
+          <p>:</p>
+          <DateTimeDisplay value={seconds} type={'Seconds'} isDanger={false} />
+        </a>
+      </div>
+    );
+  };
+  }
   return (
     <article>
             <ul  className="clock-options" >
@@ -24,19 +44,8 @@ function ClockItems(targetDate) {
                 <li>Option 3</li>
             </ul>
             {/* <h1>Heure : ${ new Date(time).toString()}</h1> */}
-            <h1>
-                {count} ---
-                <input
-                    type="number"
-                    value={intervalValue}
-                    onChange={handleChangeIntervalValue}
-                  />
-             </h1>
-           <div className="clock-buttons">
+                  <h1></h1>
                  <button >start</button>
-                 <button >stop</button>
-                 <button>reset</button>
-           </div>
     </article>
   )
 }
