@@ -52,7 +52,7 @@ function ClockItems() {
                     onChange={(e)=>handleChangeDate(e)}
                 />
            </div>
-            {(days + hours + minutes + seconds <= 0) 
+            {(days + hours + minutes + seconds <= 0) ||  isNaN(days) || isNaN(hours) || isNaN(minutes) || isNaN(seconds)  
                   ? 
                   <ExpiredNotice /> 
                   : 
