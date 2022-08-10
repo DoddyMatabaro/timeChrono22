@@ -1,0 +1,32 @@
+article{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    width: 80%;
+    color: white;
+    background-color: #1F1D1D;
+    padding: 1.4rem;
+}
+.clock-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+}
+.clock-options li{
+    padding: 0 2rem;
+}
+h1{
+    font-size: 65px;
+}
+button{
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    color: black;
+    width: 40%;
+    padding: 1rem;
+    background-color: #FBCE43;
+}
