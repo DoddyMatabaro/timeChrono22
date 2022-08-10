@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './clockItems.css';
 import DateTimeDisplay from '../DateTimeDisplay';
@@ -34,15 +34,24 @@ const ShowCounter = ({days, hours, minutes, seconds})=>{
   );
 };
 
-function ClockItems(targetDate) {
-  const [days, hours, minutes, seconds] = useCountdown(targetDate);
+function ClockItems() {
+  const [currentDateValue, setCurrentDateValue] = useState("");
+  // let targetDate = currentDateValue;
+  const [days, hours, minutes, seconds] = useCountdown(currentDateValue);
+      function handleChangeDate(e){
+        setCurrentDateValue(e.currentTarget.value);
+      }
+
+
   return (
     <article>
-            <ul  className="clock-options" >
-                <li>Option 1</li>
-                <li>Option 2</li>
-                <li>Option 3</li>
-            </ul>
+            <div>
+                <label>Date: </label>
+                <input 
+                    type="datetime-local"
+                    onChange={(e)=>handleChangeDate(e)}
+                />
+           </div>
             {(days + hours + minutes + seconds <= 0) 
                   ? 
                   <ExpiredNotice /> 
