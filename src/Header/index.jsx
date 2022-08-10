@@ -10,7 +10,7 @@ function Header() {
             <img src={logo} alt="logo" />
         </div>
         <nav>
-            Menu
+            {/* Menu */}
         </nav>
     </header>
     

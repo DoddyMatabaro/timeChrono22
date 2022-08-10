@@ -45,7 +45,7 @@ function ClockItems() {
 
   return (
     <article>
-            <div>
+            <div className='clock-date'>
                 <label>Date: </label>
                 <input 
                     type="datetime-local"
@@ -63,7 +63,6 @@ function ClockItems() {
                       seconds={seconds}
                   />
             }
-                 <button >start</button>
     </article>
   )
 }
